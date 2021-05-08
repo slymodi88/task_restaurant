@@ -11,7 +11,9 @@ class Command(BaseCommand):
         Table.objects.get_or_create(table_num=2,num_seats=2)
         Table.objects.get_or_create(table_num=3,num_seats=4)
         Table.objects.get_or_create(table_num=4,num_seats=6)
-        User.objects.create_superuser("5555","test1234")
+        if not User.objects.filter(employee_number="5555", is_superuser=True).exists():
+            User.objects.create_superuser("5555", "test1234")
+
 
 
 
